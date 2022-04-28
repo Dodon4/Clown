@@ -1,0 +1,71 @@
+id,name,type,message,assoc,mult,prior,w1,v1,a1,d1,w2,v2,a2,d2,author,astate1,apos1,apre,astate2,apos2,apost,object,ostate1,opos1,opre,ostate2,opos2,opost,target,tstate1,tpos1,tpre,tstate2,tpos2,tpost,
+1,fall,_unattended,falls off the table,-,0,0.1,0,0,0,0,0,0,0,0,movable,-,edge,-,-,floor,notable,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+2,rat-run,_unattended,the rat jumps on the <position>,-,0,0.1,0,0,0,0,0,0,0,0,rat,alive,not trash,-,-,random,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+3,drop,auxiliary,leaves <object> <pos>,-,0,0.1,0,0,0,0,0,0,0,0,-,present,standing,called,-,-,-,inhands,-,-,-,-,-,not inhands,-,-,-,-,-,-,-,-
+4,rip,auxiliary,rips the <object> off the hanger,-,0,0.1,0.1,-0.7,0.7,0.9,0,0,0,0,-,present,standing,called,-,-,-,hangable,hanger,hanging,walkto,nohanger,floor,inhands,-,-,-,-,-,-,-,-
+5,shot,auxiliary,is shot dead,-,0,0.1,0,0,0,0,0,0,0,0,-,present,not trash,called,-,-,endshow,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+6,take,auxiliary,takes the <object>,-,0,0.1,0,0,0,0,0,0,0,0,-,present,standing,called,-,-,-,pickable,-,-,access,-,-,inhands,-,-,-,-,-,-,-,-
+7,walkto,auxiliary,walks to the <object>,-,0,0.1,0,0,0,0,0,0,0,0,-,present,not trash,called,-,standing,-,movable,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+8,banana-peel,involuntary,"slipped on banana peel, falls down, gets up",-,0,0.1,0.5,-1,1,-1,0,0,0,0,-,present,standing,-,-,-,-,banana,eaten,floor,-,-,-,-,-,-,-,-,-,-,-,-
+9,chandelier,involuntary,"bumped his head off the chandelier, ouch",-,0,0.1,0.3,-0.4,0.5,-0.3,0,0,0,0,-,present,standing,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+10,gun-step,involuntary,"stepped on the shotgun, the gun shoots",-,0,0.1,0.4,-0.6,0.7,-0.3,0,0,0,0,-,present,standing,-,-,-,-,shotgun,loaded,floor,-,-,-,-,-,-,-,-,-,-,-,-
+11,hammer-st,involuntary,"stumbled on the hammer, screams of pain",-,0,0.1,0.3,-0.5,0.5,-0.5,0,0,0,0,-,present,standing,-,-,-,-,hammer,-,floor,-,-,-,-,-,-,-,-,-,-,-,-
+12,notice,involuntary,notices <object> motion,-,0,0.1,0.1,0,0.2,-0.1,0,0,0,0,-,present,not trash,-,-,-,-,notable,-,floor,-,-,-,-,-,-,-,-,-,-,-,-
+13,rake-step,involuntary,"stepped on the rake, hurt his head, ouch!",-,0,0.1,0.5,-1,0.9,-0.5,0,0,0,0,-,present,standing,-,-,-,-,rake,-,floor,-,-,-,-,-,-,-,-,-,-,-,-
+14,vodka-st,involuntary,"stumbled on the bottle of vodka, the bottle rolls",-,0,0.1,0.2,-0.3,0.3,-0.2,0,0,0,0,-,present,standing,-,-,-,-,vodka,-,floor,-,-,-,-,-,-,-,-,-,-,-,-
+15,beg,other-direct,begs <target> for forgiveness,engaged,0,0.1,0.6,1,-0.5,-1,0.6,1,-0.5,1,-,present,not trash,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+16,chase,other-direct,chases <target>,engaged,0,0.1,0.4,-0.5,0.7,1,0.4,-0.5,0.7,-0.5,-,present,not trash,-,-,standing,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+17,expel,other-direct,expels <target> from the room,engaged,0,0.1,0.6,-1,1,1,0.6,-1,1,-1,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,away,-,-,-
+18,fight,other-direct,fights <target>,engaged,0,0.1,0.5,-1,1,0,0.5,-1,1,0,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+19,fist,other-direct,shows fist to <target>,engaged,0,0.1,0.3,-0.7,0.5,0.5,0.3,-0.7,0.5,-0.5,-,present,not trash,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+20,flee,other-direct,flees from <target>,engaged,0,0.1,0.5,-1,1,-1,0.5,-1,1,1,-,present,not trash,-,-,standing,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+21,greet,other-direct,greets <target>,entered,0,0.1,0.1,1,0.1,-0.5,0.1,1,0.1,0.5,-,present,not trash,not responded,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,prompted,-
+22,ignore,other-direct,ignores <target>,engaged,0,0.1,0.3,-0.5,0,0,0.3,-0.5,0,0,-,present,not trash,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+23,kick,other-direct,kicks <target> from the back,engaged,0,0.1,0.3,-1,0.5,0.5,0.3,-1,0.5,-0.5,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+24,mid-finger,other-direct,shows middle finger to <target>,engaged,0,0.1,0.3,-0.7,-0.2,0.3,0.3,-0.7,-0.2,-0.3,-,present,not trash,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+25,nose,other-direct,makes a long nose at <target>,engaged,0,0.1,0.1,-0.5,-0.2,0.2,0.1,-0.5,-0.2,-0.2,-,present,not trash,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+26,pat,other-direct,pats <target> on a shoulder,engaged,0,0.1,0.1,0.1,-0.5,0.2,0.1,0.1,-0.5,-0.2,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+27,point,other-direct,points finger at <target>,engaged,0,0.1,0.1,-0.2,0.1,0,0.1,-0.2,0.1,0,-,present,not trash,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+28,ruffle,other-direct,ruffles <target>'s hair,ruffled,0,0.1,0.2,-0.5,0,0.7,0.2,-0.5,0,-0.7,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,ruffled,-
+29,slap,other-direct,slaps <target> into the face,engaged,0,0.1,0.3,-1,0.7,0,0.3,-1,0.7,0,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,engaged,-
+30,trash,other-direct,pushes <target> into the trash,engaged,0,0.1,0.7,-1,0.9,1,0.7,-1,0.9,-1,-,present,standing,-,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,trash,engaged,-
+31,accept,prompted,takes <object> from <target>,prompted,1,0.1,0.3,1,1,1,0.3,1,1,-1,-,present,standing,prompted,-,-,-,offerable,-,not trash,prompted,-,-,inhands,agent,present,not trash,-,-,-,-,-
+32,decline,prompted,declines the <object> offered by <target>,prompted,1,0.1,0.4,-1,0,0,0.4,-1,0,0,-,present,standing,prompted,-,-,-,offerable,-,not trash,prompted,-,-,not prompted,agent,present,not trash,-,-,-,-,-
+33,greet-ignore,prompted,ignores <target>'s greeting,prompted,0,0.1,0.4,-1,0.1,1,0.4,-1,0.1,-1,-,present,not trash,prompted,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,-,-
+34,greet-respect,prompted,greets <target> in response,prompted,0,0.1,0.1,1,-0.1,-0.5,0.1,1,-0.1,0.5,-,present,not trash,prompted,-,-,responded,-,-,-,-,-,-,-,agent,present,not trash,-,-,-,-,-
+35,brush,self-directed,brushed his hair,ruffled,0,0.1,0.1,1,-0.5,0,0,0,0,0,-,present,not trash,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+36,enter,self-directed,enters the room,-,0,0.1,0,0,0,0,0,0,0,0,-,away,-,-,present,standing,entered,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+37,intotrash,self-directed,crawls into the trash,-,0,0.1,0.7,-1,1,0,0,0,0,0,-,present,standing,-,-,trash,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+38,jump,self-directed,"jumps out of the window, falls, and dies",-,0,0.1,1,-1,1,-1,0,0,0,0,-,present,not trash,-,away,-,endshow,-,-,-,-,-,-,-,window,-,-,-,-,-,-,-
+39,leave,self-directed,leaves the room,-,0,0.1,0.6,-0.9,0,-1,0,0,0,0,-,present,standing,-,away,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+40,outoftrash,self-directed,gets out of the trash,-,0,0.1,0.5,0.5,1,0,0,0,0,0,-,present,trash,-,-,standing,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+41,ruffle-self,self-directed,ruffles his hair,-,0,0.1,0.1,-0.5,0.5,0,0,0,0,0,-,present,not trash,-,-,-,ruffled,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+42,walking,self-directed,paces the floor,-,0,0.1,0.1,0.1,0.5,0,0,0,0,0,-,present,standing,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+43,putright,set-put,puts <object> <pos>,-,0,0.1,0.1,1,0,0,0,0,0,0,-,present,standing,-,-,-,-,movable,-,not right,inhands,-,right,-,-,-,-,-,-,-,-,-
+44,putwrong,set-put,puts <object> <pos>,-,0,0.1,0.1,-1,0,0,0,0,0,0,-,present,standing,-,-,-,-,movable,-,not ugly,inhands,-,worse,-,-,-,-,-,-,-,-,-
+45,set-flowers,set-put,arranges flowers in the vase,-,0,0.1,0.1,1,0,0,0,0,0,0,-,present,not trash,-,-,-,-,flowers,-,-,inhands,right,-,-,-,-,-,-,-,-,-,-
+46,flip-flowers,set-put,flips the vase with flowers,-,0,0.1,0.1,0,0,0,0,0,0,0,-,present,not trash,-,-,-,-,flowers,right,-,-,wrong,-,-,-,-,-,-,-,-,-,-
+47,load-gun,set-put,loaded the shotgun,-,0,0.1,0.1,0,0,0,0,0,0,0,-,present,not trash,-,-,-,-,shotgun,wrong,-,inhands,right,-,-,-,-,-,-,-,-,-,-
+48,close-trash,set-put,closed the trash container,-,0,0.1,0.1,1,0,0,0,0,0,0,-,present,standing,-,-,-,-,trash,open,-,-,closed,-,-,-,-,-,-,-,-,-,-
+49,open-trash,set-put,leaves the trash container open,-,0,0.1,0.1,-0.5,0,0.5,0,0,0,0,-,present,standing,-,-,-,-,trash,closed,-,-,open,-,-,-,-,-,-,-,-,-,-
+50,break-chair,tool-object,breaks the chair with the hammer,-,0,0.1,0.6,-0.9,0.5,0.7,0,0,0,0,-,present,standing,-,-,-,fall,hammer,-,not trash,inhands,-,-,-,chair,intact,-,-,broken,-,-,-
+51,break-rake,tool-object,breaks the rake teeth with the hammer,-,0,0.1,0.6,-0.8,0.5,0,0,0,0,0,-,present,standing,-,-,-,-,hammer,-,not trash,inhands,-,-,-,rake,intact,floor,-,-,-,-,-
+52,hammer-mir,tool-object,"hits the mirror with the hammer, makes it false",-,0,0.1,0.6,-0.6,0.5,0.5,0,0,0,0,-,present,standing,-,-,-,-,hammer,-,not trash,inhands,-,-,-,mirror,direct,-,-,false,-,-,-
+53,hammer-rat,tool-object,"hits the rat with the hammer, sets it alive",-,0,0.1,0.7,-1,0.7,0.7,0,0,0,0,-,present,standing,-,-,-,rat-run,hammer,-,not trash,inhands,-,-,-,rat,dead,not trash,-,alive,-,not movable,-
+54,rake-pepper,tool-object,rakes the pepper scattered on the floor,-,0,0.1,0.5,0.5,-0.5,0,0,0,0,0,-,present,standing,-,-,-,-,rake,intact,not trash,inhands,-,-,-,pepper,spilled,-,-,-,-,-,-
+55,shoot-mirror,tool-object,"shoots the mirror, restoring it to direct",-,0,0.1,0.6,0.5,0,0.5,0,0,0,0,-,present,not trash,-,-,-,-,shotgun,-,not trash,inhands,-,-,-,mirror,false,-,-,direct,-,-,-
+56,shoot-rat,tool-object,shoots the rat dead,-,0,0.1,0.5,1,-0.7,0.7,0,0,0,0,-,present,not trash,-,-,-,-,shotgun,loaded,not trash,inhands,smoking,-,-,rat,alive,not trash,-,dead,-,movable,-
+57,hammer,tool-other,hits <target> with the hammer,-,0,0.1,0.3,-1,1,1,0.3,-1,1,-1,-,present,standing,-,-,-,-,hammer,-,not trash,inhands,-,-,-,agent,present,not trash,-,-,-,engaged,-
+58,offer,tool-other,offers <object> to <target>,-,1,0.1,0.1,1,1,-1,0.1,1,1,1,-,present,standing,-,-,-,-,offerable,-,not trash,inhands,-,-,prompted,agent,present,not trash,-,-,-,prompted,-
+59,shoot-other,tool-other,shoots <target> dead,-,0,0.1,1,-1,1,1,1,-1,-1,-1,-,present,not trash,-,-,-,-,shotgun,loaded,not trash,inhands,smoking,-,-,agent,present,not trash,-,-,-,shot,-
+60,sprinkle,tool-other,"sprinkles pepper on <target>,  he sneezes",-,0,0.1,0.3,-0.6,0.6,0.6,0.3,-0.6,0.6,-0.6,-,present,standing,-,-,-,-,pepper,-,not trash,inhands,half-spilled,-,-,agent,present,not trash,-,-,-,engaged,-
+61,eat-apple,with-object,eats apple,-,0,0.1,0.2,0.7,-1,0,0,0,0,0,-,present,not trash,hungry,-,-,not hungry,apple,whole,-,inhands,eaten,flippos,-,-,-,-,-,-,-,-,-
+62,eat-banana,with-object,"eats banana, throws the peel on the floor",-,0,0.1,0.2,0.7,-1,0.7,0,0,0,0,-,present,not trash,hungry,-,-,not hungry,banana,whole,-,inhands,eaten,flippos,not movable,-,-,-,-,-,-,-,-
+63,mirror-funny,with-object,makes funny faces at the mirror,-,0,0.1,0.1,-0.5,0,0,0,0,0,0,-,present,standing,-,-,-,-,mirror,-,-,walkto,-,-,-,-,-,-,-,-,-,-,-
+64,mirror-smart,with-object,makes smart faces at the mirror,-,0,0.1,0.1,0.5,0,0,0,0,0,0,-,present,standing,-,-,-,-,mirror,direct,upright,walkto,-,-,-,-,-,-,-,-,-,-,-
+65,pepper,with-object,"sprinkles pepper on the floor, sneezes",-,0,0.1,0.2,-0.5,0.5,0,0,0,0,0,-,present,not trash,-,-,-,-,pepper,-,not trash,inhands,half-spilled,-,-,-,-,-,-,-,-,-,-
+66,rise,with-object,rises from the chair,-,0,0.1,0.1,0,0.5,0.5,0,0,0,0,-,present,sitting,-,-,standing,-,chair,intact,not fallen,-,-,-,-,-,-,-,-,-,-,-,-
+67,shoot-self,with-object,shoots himself dead,-,0,0.1,1,-1,1,-1,0,0,0,0,-,present,not trash,-,-,-,shot,shotgun,loaded,not trash,inhands,smoking,-,-,-,-,-,-,-,-,-,-
+68,shotgun,with-object,shoots the gun,-,0,0.1,0.2,0,0,0,0,0,0,0,-,present,not trash,-,-,-,-,shotgun,loaded,not trash,inhands,smoking,-,-,-,-,-,-,-,-,-,-
+69,sit,with-object,sits down on the chair,-,0,0.1,0.1,0.5,-0.5,-0.5,0,0,0,0,-,present,standing,-,-,sitting,-,chair,intact,not fallen,-,-,-,-,agent,-,not sitting,-,-,-,-,-
+70,vodka,with-object,drinks vodka,-,0,0.1,0.6,1,1,1,0,0,0,0,-,present,not trash,-,-,-,hungry,vodka,-,-,inhands,wrong,-,-,-,-,-,-,-,-,-,-
