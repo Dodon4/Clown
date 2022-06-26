@@ -27,10 +27,10 @@ public class ClownInt: MonoBehaviour
     public const double OBJECT_DISTANCE = 10f;
     public const double SEMANTIC_DISTANCE = 10;
     public const double DISTANCE_TURN_ON_MORAL_SCHEMA = 1;
-    public const double DISTANCE_BETWEEN_APPRAISALS_AND_FEELINGS = 0.71;
+    public const double DISTANCE_BETWEEN_APPRAISALS_AND_FEELINGS = 0.6;
     public const double r = 0.1;
     public const double r1 = 0.3;
-    public const double beta = 1.1;
+    public const double beta = 1.4;
 
     private Dictionary<string, FeelingState> feelingsStates = new Dictionary<string, FeelingState>();
 
@@ -59,11 +59,17 @@ public class ClownInt: MonoBehaviour
     Rigidbody rb;
 
     Logger logger;
+    IEnumerator<WaitForSeconds> Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        moralSchemaIsActive = true;
+    }
     void Start()
     {
+        StartCoroutine(Wait(10f));
         feelingsStates = JsonConvert.DeserializeObject<Dictionary<string, FeelingState>>(File.ReadAllText(JSON_PATH_INDEPENDENT_FEELINGS_STATES));
-        ActionsDataBase = gameObject.GetComponent<Clown>().ActionsDataBase;
-        ObjectsDataBase = gameObject.GetComponent<Clown>().ObjectsDataBase;
+        ActionsDataBase = GameObject.Find("Controller").GetComponent<Clown>().ActionsDataBase;
+        ObjectsDataBase = GameObject.Find("Controller").GetComponent<Clown>().ObjectsDataBase;
         WhiteStates = SecondClown.GetComponent<WhiteClownStates>();
         rb = GetComponent<Rigidbody>();
         logger = new Logger();
@@ -82,27 +88,28 @@ public class ClownInt: MonoBehaviour
             if (Target != null)
             {
 
-                if (Vector3.Distance(transform.position, Target.transform.position) <= 2 && Target.name.Equals("window"))
-                {
-                    transform.position = OutOfWindow.position;
-                    isDied = true;
-                }
+                //if (Vector3.Distance(transform.position, Target.transform.position) <= 3 && Target.name.Equals("window"))
+                //{
+                //    transform.position = OutOfWindow.position;
+                //    isDied = true;
+                //}
                 if(doingAction.name.Equals("shot"))
                 {
                     ActionAnimation();
                     NoAction = true;
                     Target = null;
-                    logger.updateLogs("Redhead", doingAction.target.type == "agent" ? "Whitehair" : doingAction.target.type,
-                    doingAction.id, "Redhead " + replaceMocks(doingAction, doingAction.message, firstHandle),
+                    logger.updateLogs(gameObject.name, doingAction.target.type == "agent" ? "Whitehair" : doingAction.target.type,
+                    doingAction.id, gameObject.name + " " + replaceMocks(doingAction, doingAction.message, firstHandle),
                     appraisals, feelings, firstClownCharacteristic);
                 }
-                if (Vector3.Distance(transform.position, Target.transform.position) <= 2)
+                if (Vector3.Distance(transform.position, Target.transform.position) <= 3)
                 {
                     if (doingAction.target.pos2.Equals("trash"))
                     {
                         WhiteStates.isTrash = true;
                         WhiteStates.isStanding = false;
                         SecondClown.GetComponent<ClownInfluence>().SetTrash();
+                        NoAction = true;
                     }
                     if (TimeForAction > 0)
                     {
@@ -112,6 +119,8 @@ public class ClownInt: MonoBehaviour
                     {
                         if(doingAction.name.Equals("take"))
                         {
+                            GetComponent<Animator>().SetTrigger("Take");
+                            new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length);
                             Target.transform.position = ObjectPlace.position;
                             Target.transform.parent = ObjectPlace;
 
@@ -125,18 +134,19 @@ public class ClownInt: MonoBehaviour
                         ActionAnimation();
                         NoAction = true;
                         Target = null;
-                        logger.updateLogs("Redhead", doingAction.target.type == "agent" ? "Whitehair" : doingAction.target.type,
-                        doingAction.id, "Redhead " + replaceMocks(doingAction, doingAction.message, firstHandle),
+                        logger.updateLogs(gameObject.name, doingAction.target.type == "agent" ? "Whitehair" : doingAction.target.type,
+                        doingAction.id, gameObject.name + " " + replaceMocks(doingAction, doingAction.message, firstHandle),
                         appraisals, feelings, firstClownCharacteristic);
                     }
                 }
                 else
                 {
 
-                    transform.LookAt(Target.transform);
+                    
                     Vector3 direction = Target.transform.position - transform.position;
                     direction.y = 0;
                     direction.Normalize();
+                    transform.rotation = Quaternion.LookRotation(direction);
                     rb.velocity = 2 * direction;
 
                 }
@@ -152,9 +162,9 @@ public class ClownInt: MonoBehaviour
                     ActionAnimation();
                     NoAction = true;
                     Target = null;
-                    logger.updateLogs("Redhead", doingAction.target.type == "agent" ? "Whitehair" : doingAction.target.type,
-doingAction.id, "Redhead " + replaceMocks(doingAction, doingAction.message, firstHandle),
-appraisals, feelings, firstClownCharacteristic);
+                    logger.updateLogs(gameObject.name, doingAction.target.type == "agent" ? "Whitehair" : doingAction.target.type,
+                    doingAction.id,gameObject.name + " "  + replaceMocks(doingAction, doingAction.message, firstHandle),
+                    appraisals, feelings, firstClownCharacteristic);
                 }
             }
         }
@@ -239,10 +249,10 @@ appraisals, feelings, firstClownCharacteristic);
 
     public void rebuildClownsStates(Action action, string pos) {
         appraisals = getAppraisalsAfterAction(appraisals, action.vad.authorAppraisals, action.vad.w1);
-        appraisalsSecondClown = getAppraisalsAfterAction(appraisalsSecondClown, action.vad.targetAppraisals, action.vad.w2);
+        SecondClown.GetComponent<ClownInt>().appraisals = getAppraisalsAfterAction(SecondClown.GetComponent<ClownInt>().appraisals, action.vad.targetAppraisals, action.vad.w2);
 
         feelings = moralSchema(feelings, appraisals);
-        feelingsSecondClown = moralSchema(feelingsSecondClown, appraisalsSecondClown);
+        SecondClown.GetComponent<ClownInt>().feelings = moralSchema(SecondClown.GetComponent<ClownInt>().feelings, SecondClown.GetComponent<ClownInt>().appraisals);
 
         if (!action.author.pos2.Equals("-"))
         {
